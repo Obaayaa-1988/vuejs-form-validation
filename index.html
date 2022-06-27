@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Vue Input Field</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.2.0/vue.js"></script>
-        <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/1935d064dd.js" crossorigin="anonymous"></script>
-    <link rel='stylesheet' type='text/css' media='screen' href='tail.css'>    
+    <link rel='stylesheet' type='text/css' media='screen' href='tail.css'>
 </head>
+
 <body>
     <!-- <div id="main">
         <form @submit="checkForm" method="post">
@@ -38,42 +40,83 @@
         </form>
         </div> -->
 
-         <div id="main">
+    <div id="main">
         <div class="w-full max-w-xs">
-            
+
             <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit="checkForm" method="post">
                 <p v-if="errors.length">
                     <b>Please correct the following error(s)</b>
-                    <ul>
-                        <li v-for="error in errors">{{ error }}</li>
-                    </ul>
+                <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                </ul>
                 </p>
-                
-              <div class="mb-4">
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="first" placeholder="firstName" v-model="first" name="first" >
-              </div>
-              <div class="mb-4">
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="last" placeholder="LastName" v-model="last" name="last" >
-              </div>
 
-              <div class="mb-6">
-               
-                <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" type="password" id="pass" placeholder="password" v-model="pass" name="pass" >
-                <input class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" input type="password" id="firm" placeholder="confirm password" v-model="firm" name="firm" >  
-              </div>
-              <div class="flex items-center justify-between">
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit left" id="show-modal" value="Add">
-                  Submit
-                </button>
-              </div>
+                <div class="mb-4">
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text" id="first" placeholder="firstName" v-model="first" name="first">
+                </div>
+                <div class="mb-4">
+                    <input
+                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        type="text" id="last" placeholder="LastName" v-model="last" name="last">
+                </div>
+
+                <div class="mb-6">
+
+                    <input
+                        class="shadow appearance-none border  w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        type="password" id="pass" placeholder="password" v-model="pass" name="pass">
+                    <input
+                        class="shadow appearance-none border  w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                        input type="password" id="firm" placeholder="confirm password" v-model="firm" name="firm">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                        type="submit left" id="show-modal" value="Add" @click="showModal">
+                        Submit
+                    </button>
+                    <modal v-if="showModal" @close="showModal = false"></modal>
+                </div>
             </form>
-        
-          </div>
-         </div>
-    
-    
 
-        <!-- <div id="modal-show" id="mode">
+        </div>
+
+        <!-- <transition name="modal">
+            <div class="modal-mask">
+                <div  class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+                    <div class="modal-container">
+                        <div >
+                            <slot>
+                                <h3>Welcome Thanks for registering</h3>
+                            </slot>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="modal-button" @click="$emit('close')">close</button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </transition>
+ -->
+
+
+
+
+    </div>
+
+
+
+
+
+    <!-- <div id="modal-show" id="mode">
             <div class="modal-content">
            <button id="btn-modal">close</button>
            <h3>Welcome and thanks for registering</h3>
@@ -81,10 +124,11 @@
             </div>
        
             </div> -->
-         
 
- <script src="app.js">
-  
- </script>
+
+    <script src="app.js">
+
+    </script>
 </body>
+
 </html>

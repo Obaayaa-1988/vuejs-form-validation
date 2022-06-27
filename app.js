@@ -5,7 +5,8 @@ new Vue({
       first: null,
       last: null,
       pass: null,
-      firm: null
+      firm: null,
+    //   showModal: false
       
     },
 
@@ -27,11 +28,15 @@ new Vue({
                 this.errors.push('please enter your password')
             }
             if(!this.pass){
-                this.errors.push('please enter confirm your password')
+                this.errors.push('please confirm your password')
             }
             e.preventDefault();
             
-        }
+        },
+
+
+
+
 
 
 
