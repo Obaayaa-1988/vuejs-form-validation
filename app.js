@@ -13,6 +13,7 @@ new Vue({
     methods: {
         checkForm: function(e) {
             if(this.first && this.last && this.pass && this.firm) {
+                console.log("hello world")
                 return true
             }
             this.errors = [];
